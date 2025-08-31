@@ -8,3 +8,5 @@
 */
 
 export { default as ErrorPage } from './error-page'
+export { default as MobilePage } from './pages/Mobile'
+export { default as DesktopPage } from './pages/Desktop'

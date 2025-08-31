@@ -7,12 +7,13 @@
  * =======================================================
 */
 
-import './App.css'
-import App from './App'
+import "./App.css"
+import App from "./App"
 import React from "react"
-import { ErrorPage } from "./routes"
 import ReactDOM from "react-dom/client"
+import { DesktopPage, ErrorPage, MobilePage } from "./routes"
 import Root, { loader as rootLoader } from "./navigation/root"
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
 const appRoutes = createBrowserRouter ([
@@ -26,15 +27,18 @@ const appRoutes = createBrowserRouter ([
                 errorElement: <ErrorPage />,
                 children: [
                     { index: true, element: <App /> },
+                    { path: '/mobile', element: <MobilePage /> },
+                    { path: '/desktop', element: <DesktopPage /> },
                 ]
             }
         ]
     }
 ])
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={appRoutes} />
+        <ChakraProvider value={defaultSystem}>
+            <RouterProvider router={appRoutes} />
+        </ChakraProvider>
     </React.StrictMode>
 )

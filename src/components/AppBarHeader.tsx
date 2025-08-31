@@ -7,10 +7,13 @@
  * =======================================================
 */
 
-function MobilePage() {
+import { Stack, Heading } from "@chakra-ui/react"
+
+export default function AppBarHeader() {
+
     return (
-        <> Hi Mom </>
+        <Stack as={'header'}>
+            <Heading> Hello App Header</Heading>
+        </Stack>
     )
 }
-
-export default MobilePage

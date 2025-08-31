@@ -7,10 +7,5 @@
  * =======================================================
 */
 
-function DesktopPage() {
-    return (
-        <> Hi Mom </>
-    )
-}
-
-export default DesktopPage
+export { default as AppFooter } from './Footer'
+export { default as AppBarHeader } from './AppBarHeader'
