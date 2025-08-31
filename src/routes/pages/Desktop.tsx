@@ -8,29 +8,12 @@
 */
 
 import { Chat } from "../../components/"
-import { Message } from "../../interface"
-import { useEffect, useState } from "react"
-import { AppDatabase } from "../../lib/firebase"
+import { useMessages } from "../../hooks/useMessages"
 import { VStack, Heading, Box, HStack, Text } from "@chakra-ui/react"
-import { collection, onSnapshot, DocumentData, QuerySnapshot } from "firebase/firestore"
 
 function DesktopPage() {
 
-    const [messages, setMessages] = useState<Message[]>([]);
-
-    useEffect(() => {
-        const unsub = onSnapshot(
-            collection(AppDatabase, "messages"),
-            (snapshot: QuerySnapshot<DocumentData>) => {
-                const msgs: Message[] = snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                })) as Message[];
-                setMessages(msgs.sort((a, b) => a.timestamp - b.timestamp));
-            }
-        );
-        return () => unsub();
-    }, [])
+    const { messages } = useMessages();
 
     return (
         <VStack
