@@ -116,7 +116,7 @@ The choice of tech stack was driven by the need for rapid development, real-time
 
 - **Firebase Firestore**: Building a real-time backend with WebSockets from scratch is time-consuming. Firebase Firestore provides a production-ready, scalable, and incredibly simple-to-use real-time database. It handles everything, allowing time to focus on the front-end.
 
-- **Material-UI (MUI)**: Used to accelerate UI development. Instead of writing custom CSS for hours.
+- **Chakra-UI (Chakra)**: Used to accelerate UI development. Instead of writing custom CSS for hours.
 
 - **Responsive Web App (vs. React Native, Flutter)**: A responsive web app is the fastest way to simulate a mobile device.
 
@@ -143,7 +143,7 @@ Desktop Client: Allows users to send and receive messages in real-time.
 
 - **Realtime Database**: Firebase Firestore stores and syncs messages between all clients instantly.
 
-- **User-Friendly Interface**: A clean, intuitive UI was built using Material-UI.
+- **User-Friendly Interface**: A clean, intuitive UI was built using Chakra-UI.
 
 - **Supporting Documentation**: This README explains the design, functionality, and requirements.
 
