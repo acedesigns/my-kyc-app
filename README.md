@@ -20,6 +20,7 @@ A proof-of-concept application demonstrating **real-time communication** between
 - [✅ Functionality & Requirements Met](#-functionality--requirements-met)
 - [🔮 Potential Future Enhancements](#-potential-future-enhancements)
 - [🔌 Download Moola Mate](#-download-moola-mate-ios)
+- [🔌 .Net Application](#-download-moola-mate-ios)
 
 ---
 
@@ -165,3 +166,17 @@ Add expenses in seconds and see exactly where your money goes.
 
 ##### 🔌 Shameless plug 🔌
 ---
+
+### .Net Application
+
+It is still available, and even though I might not get graded on it, I had fun doing it.
+Did not know I could write a .Net Application on a Mac.
+
+Shout out to 
+- [Brew](https://brew.sh/) `brew.sh`
+- [YouTube](https://www.youtube.com) `YouTube`
+- [StackOverflow](https://stackoverflow.com) `StackOverflow`
+
+```
+https://github.com/acedesigns/my-dot-net-app
+```
