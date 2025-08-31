@@ -8,31 +8,15 @@
 */
 
 import { Chat } from "../../components/"
-import { Message } from "../../interface"
-import { useEffect, useState } from "react"
-import { AppDatabase } from "../../lib/firebase"
+import { useMessages } from "../../hooks/useMessages"
 import { useAppContext } from "../../context/AppProvider"
 import { VStack, Heading, Box, HStack, Text, Stack } from "@chakra-ui/react"
-import { collection, onSnapshot, DocumentData, QuerySnapshot } from "firebase/firestore"
+
 
 function MobilePage() {
     const { isMobileViewport } = useAppContext()
 
-    const [mobmessage, setMobMessages] = useState<Message[]>([]);
-
-    useEffect(() => {
-        const unsub = onSnapshot(
-            collection(AppDatabase, "messages"),
-            (snapshot: QuerySnapshot<DocumentData>) => {
-                const msgs: Message[] = snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                })) as Message[];
-                setMobMessages(msgs.sort((a, b) => a.timestamp - b.timestamp));
-            }
-        );
-        return () => unsub();
-    }, [])
+    const { messages } = useMessages()
 
     return (
         <VStack
@@ -46,9 +30,9 @@ function MobilePage() {
 
             <Stack w={'100%'}>
                 <Box borderRadius={15} p={5} border={'1px solid #ccc'} style={{ minHeight: "100px", overflowY: "auto"}}>
-                {mobmessage.length === 0 && (<Heading> No Messages yet </Heading>)}
+                {messages.length === 0 && (<Heading> No Messages yet </Heading>)}
 
-                {mobmessage.map((msg) => (
+                {messages.map((msg) => (
                     <Text key={msg.id}>
                         <b>{msg.user}</b>: {msg.text}
                     </Text>
