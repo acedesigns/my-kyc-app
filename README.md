@@ -20,7 +20,7 @@ A proof-of-concept application demonstrating **real-time communication** between
 - [✅ Functionality & Requirements Met](#-functionality--requirements-met)
 - [🔮 Potential Future Enhancements](#-potential-future-enhancements)
 - [🔌 Download Moola Mate](#-download-moola-mate-ios)
-- [🔌 .Net Application](#-download-moola-mate-ios)
+- [🔌 .Net Application]()
 
 ---
 
