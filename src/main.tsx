@@ -9,8 +9,8 @@
 
 import "./App.css"
 import App from "./App"
-import React from "react"
-import ReactDOM from "react-dom/client"
+import * as React from "react"
+import * as ReactDOM from "react-dom/client"
 import { DesktopPage, ErrorPage, MobilePage } from "./routes"
 import Root, { loader as rootLoader } from "./navigation/root"
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react"

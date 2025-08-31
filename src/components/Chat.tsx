@@ -7,41 +7,51 @@
  * =======================================================
 */
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { Message, } from "../interface"
+import { FormInputs } from "../typings"
 import { AppDatabase } from "../lib/firebase"
-import { ref, push, onValue } from "firebase/database"
+import { collection, addDoc } from "firebase/firestore"
+import { useForm, SubmitHandler } from "react-hook-form"
+import { Textarea, Stack, Button, Card } from "@chakra-ui/react"
 
-const Chat = ({ user }) => {
-    const [messages, setMessages] = useState([]);
-    const [text, setText] = useState("");
+const Chat = ({ user }: { user: string }) => {
 
-    useEffect(() => {
-        const messagesRef = ref( AppDatabase, "messages");
-        onValue(messagesRef, (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                setMessages(Object.values(data));
-            }
-        });
-    }, []);
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm<FormInputs>()
 
-    const sendMessage = () => {
-        const messagesRef = ref(AppDatabase, "messages");
-        push(messagesRef, { user, text, timestamp: Date.now() });
-        setText("");
-    };
+    const onSubmitMessage: SubmitHandler<FormInputs> = async (data) => {
+        console.log(data)
+        await addDoc(collection(AppDatabase, "messages"), {
+            user,
+            text: data.messageTxt,
+            timestamp: Date.now(),
+        })
+    }
 
     return (
-        <div>
-            <div style={{ height: "300px", overflowY: "auto" }}>
-                {messages.map((msg, i) => (
-                    <p key={i}><b>{msg.user}</b>: {msg.text}</p>
-                ))}
-            </div>
-            <input value={text} onChange={(e) => setText(e.target.value)} />
-            <button onClick={sendMessage}>Send</button>
-        </div>
+        <Stack w={"100%"}>
+            <Card.Root width="100%" variant={'elevated'} minHeight={'300px'}>
+
+                <Card.Body gap={"2"}>
+                        <Textarea color={"black"} defaultValue=""
+                                {...register("messageTxt")} placeholder="Type a message..." >
+                        </Textarea>
+
+                    </Card.Body>
+
+                <Card.Footer justifyContent="flex-end">
+                    <Button
+                        onClick={handleSubmit(onSubmitMessage)}
+                    >Send Message</Button>
+                </Card.Footer>
+            </Card.Root>
+        </Stack>
     )
 }
 
-export default Chat;
+export default Chat

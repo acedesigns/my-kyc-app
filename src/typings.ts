@@ -7,6 +7,6 @@
  * =======================================================
 */
 
-export { default as Chat } from './Chat'
-export { default as AppFooter } from './Footer'
-export { default as AppBarHeader } from './AppBarHeader'
+export type FormInputs = {
+    messageTxt: string
+}

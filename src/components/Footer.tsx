@@ -8,9 +8,10 @@
 */
 
 import * as React from "react"
-import {Heading, HStack} from "@chakra-ui/react"
+import { useAppContext } from "../context/AppProvider"
+import { Heading, HStack, Stack } from "@chakra-ui/react"
 
-function Copyright() {
+function Copyright(): React.JSX.Element {
     return (
         <Heading>
             {new Date().getFullYear()}
@@ -18,20 +19,24 @@ function Copyright() {
     );
 }
 
-export default function AppFooter() {
+export default function AppFooter(): React.JSX.Element {
+
+    const { isMobileViewport } = useAppContext()
+
     return (
-        <React.Fragment>
-            <HStack
-                as="footer"
-                backgroundColor="primary.500"
-                color="#E5EAEF"
-                flex="none"
-                minHeight="54px"
-                paddingY={4}
-                width="100%"
-            >
+        <Stack
+            as="footer"
+            maxWidth={1264}
+            mr={'auto'} ml={'auto'}
+            paddingX={isMobileViewport ? 5 : 4}
+            paddingY={isMobileViewport ? 5 : 6}
+            w={'100%'} direction={{ base: 'column', xl: 'row', md: 'row' }}
+        >
+            <HStack width={"100%"} justifyContent={'space-between'}>
                 <Copyright />
+
             </HStack>
-        </React.Fragment>
+
+        </Stack>
     )
 }

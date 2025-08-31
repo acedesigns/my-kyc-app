@@ -13,7 +13,7 @@ export default function AppBarHeader() {
 
     return (
         <Stack as={'header'}>
-            <Heading> Hello App Header</Heading>
+            <Heading> App Header</Heading>
         </Stack>
     )
 }

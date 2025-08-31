@@ -7,10 +7,11 @@
  * =======================================================
 */
 
-import { Link } from "react-router-dom"
-import { VStack, Button, ButtonGroup } from "@chakra-ui/react";
+import * as React from "react"
+import { VStack, Button, ButtonGroup, Heading } from "@chakra-ui/react"
 
-function App() {
+
+function App(): React.JSX.Element {
 
   return (
       <VStack
@@ -18,14 +19,14 @@ function App() {
           width="100%" mr={'auto'} ml={'auto'}
           direction={{ base: 'column', xl: 'row', md: 'row' }}
       >
-          <h1> Welcome to Our App </h1>
+          <Heading as={'h1'}> Welcome to Our App </Heading>
+
           <ButtonGroup colorPalette={"blue"}>
               <Button asChild>
                   <a href="/mobile">Mobile</a>
               </Button>
 
               <Button asChild>
-
                   <a href="/desktop">Web</a>
               </Button>
           </ButtonGroup>
