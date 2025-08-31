@@ -31,7 +31,7 @@ A proof-of-concept application demonstrating **real-time communication** between
 ### 🧰 Tech Stack
 - **Frontend Framework**: React 18 + Vite
 - **Realtime Database**: Firebase Firestore
-- **UI Library**: Material-UI (MUI)
+- **UI Library**: Chakra-UI (@chakra-ui/react)
 - **Build Tool**: Vite
 - **Package Manager**: yarn
 
